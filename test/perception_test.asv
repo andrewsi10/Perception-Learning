@@ -1,0 +1,3 @@
+disp('Hello World!');
+for i=1:4:10
+    printf(strcat('i = ', num2str(i));
