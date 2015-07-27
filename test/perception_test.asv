@@ -1,3 +1,11 @@
 disp('Hello World!');
 for i=1:4:10
-    printf(strcat('i = ', num2str(i));
+    disp(strcat('i = ', num2str(i)));
+end
+%{ rootDir = pwd(); returns current folder path
+if ~isdir(resultsDir)
+resultsDir = [rootDir '/results/']; create results folder
+resultsDir = mkdir(resultsDir);
+end
+result = 
+%}
