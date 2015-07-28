@@ -34,8 +34,8 @@ function pic_1, pic_2; pic_3  = Disp_image(Window, TextureVector, MorphVector);
     % the morph vector ?
     %not sure whether pic_2 or pic_3 is going to be the correct picture
     % Morph_dist = 
-Morph_dist = picture_2 - picture_1
-MorphVector = [Morph_dist]
+Morph_dist = picture_3 - picture_2
+MorphVector = [1:Morph_dist:146]
     
    %Returning the users input, s or k
 [keyIsDown, secs, KeyCode] = KbCheck;
