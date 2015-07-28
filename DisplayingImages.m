@@ -26,20 +26,20 @@ img_h = 155
     
     temp(I) = Screen('MakeTexture', window, uint8());
     
-    Screen('TextureVector' , window, temp(I), [], ...
+    Screen('DrawTexture' , window, A(picture1(I)), [], ...
         [x_center, y_center + y_image/4, x_center, y_center + y_image/4]); 
     
     RandLoR = [1 2];
     index_randlor = randsample(RandLor, 1);
         
-    if index_randlor == 1 
-        Screen('DrawTexture', window, temp(I), [], ...
+    if randLorR(I) == 1 
+        Screen('DrawTexture', window, A(picture2(I)), [], ...
         [x_center/4 - img_w/2, y_center/4 - img_/2 , x_center/4 + img_w/2, y_center/4 + img_h/2 ]);
         
     end    
     
-    if index_randlor == 2
-        Screen('DrawTexture', window, temp(I), [], ...
+    if randLorR(I) == 2
+        Screen('DrawTexture', window, A(picture2(I)), [], ...
         [x_center/4 + img_w/2, y_center/4 + img_/2 , x_center/4 + img_w/2, y_center/4 + img_h/2 ]);
     
     
