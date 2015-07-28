@@ -9,7 +9,7 @@ Screen('Preference', 'SkipSyncTests', 1);
 
  HideCursor();
 
-mask = imread('black_new.png');
+ mask = imread('black_new.png');
 
  mask = 255 - mask(:,:,1);
  A = [];
@@ -19,29 +19,29 @@ mask = imread('black_new.png');
  inc_amount = 2;
  cnt = 0;
  morph_dist = [];
- for i = 0:inc_amount:10  %
+ for i = 0:inc_amount:8  
      cnt = cnt + 1;
      morph_dist(cnt) = i;
  end
  morph_dist = repmat(morph_dist, 1, 26);
  morph_dist = Shuffle(morph_dist);
- oneortwo = [1, 2];
- largerorsmaller = [];
+ %oneortwo = [1, 2];
+ %largerorsmaller = [];
  picture2  = [];
  for i = 1:numtrials
 
- largerorsmaller(i) = randsample(oneortwo, 1);
- if largerorsmaller(i) == 1
-     picture2(i) = mod(picture1(i) - morph_dist(i), 147) + 1;
- end 
- if largerorsmaller(i) == 2
-     picture2(i) = mod(picture1(i) + morph_dist(i), 147) + 1;
+%  largerorsmaller(i) = randsample(oneortwo, 1);
+%  if largerorsmaller(i) == 1
+%      picture2(i) = mod(picture1(i) - morph_dist(i), 147) + 1;
+%  end 
+%  if largerorsmaller(i) == 2
+%      picture2(i) = mod(picture1(i) + morph_dist(i), 147) + 1;
+%  end
+ picture2(i) = mod(picture1(i) + morph_dist(i), 147) + 1;
  end
- end
- picture3 = picture2-picture1;
  leftorright = repmat([1,2], 1, numtrials/2);
  randLorR = Shuffle(leftorright);
- for i = 1:100
+ for i = 1:147
 
      
     if i >= 10

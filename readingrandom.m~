@@ -1,37 +1,48 @@
-function [A, picture1, picture2, randLorR] = readingrandom();
+%function [A, picture1, picture2, randLorR] = readingrandom();
+clear all;
 
-mask = imread('black_new.png');
+Screen('Preference', 'SkipSyncTests', 1);
+
+[window,rect] = Screen('OpenWindow', 0);
+
+ Screen('BlendFunction', window, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+ HideCursor();
+
+ mask = imread('black_new.png');
 
  mask = 255 - mask(:,:,1);
  A = [];
  B = 1:147;
- numtrials = 30;
+ numtrials = 130;
  picture1 = randsample(B, numtrials);
- inc_amount = 4;
+ inc_amount = 2;
  cnt = 0;
  morph_dist = [];
- for i = 1:inc_amount:145
+ for i = 0:inc_amount:8  
      cnt = cnt + 1;
      morph_dist(cnt) = i;
  end
- Morph_Vector = [];
+ morph_dist = repmat(morph_dist, 1, 26);
+ morph_dist = Shuffle(morph_dist);
  oneortwo = [1, 2];
  largerorsmaller = [];
  picture2  = [];
  for i = 1:numtrials
- Morph_Vector(i) = randsample(morph_dist, 1);
- largerorsmaller(i) = randsample(oneortwo, 1);
- if largerorsmaller(i) == 1
-     picture2(i) = mod(picture1(i) - Morph_Vector(i), 147) + 1;
- end 
- if largerorsmaller(i) == 2
-     picture2(i) = mod(picture1(i) + Morph_Vector(i), 147) + 1;
+ %checks to see if 
+%  largerorsmaller(i) = randsample(oneortwo, 1);
+%  if largerorsmaller(i) == 1
+%      picture2(i) = mod(picture1(i) - morph_dist(i), 147) + 1;
+%  end 
+%  if largerorsmaller(i) == 2
+%      picture2(i) = mod(picture1(i) + morph_dist(i), 147) + 1;
+%  end
+ picture2(i) = mod(picture1(i) 
  end
- end
-
+ picture3 = picture2-picture1;
  leftorright = repmat([1,2], 1, numtrials/2);
  randLorR = Shuffle(leftorright);
- for i = 1:100
+ for i = 1:147
 
      
     if i >= 10
@@ -46,13 +57,6 @@ mask = imread('black_new.png');
      C(:,:,4) = mask;
 
      A(i) = Screen('MakeTexture', window, uint8(C));
-
-%fischer's z transformation z' = 0.5(ln(1+r) - ln(1-r));
-%[r,pval] = corr(variable_1,variable_2);
-%varibales must be in column format.
-% where r is the correlation coefficient and pval tests to see if the 
-% correlation coefficient is significantly different from 0.
-% 
     
 
  end
