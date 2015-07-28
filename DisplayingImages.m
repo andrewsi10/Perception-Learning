@@ -1,3 +1,5 @@
+function pic_1, pic_2; pic_3  = Disp_image(Window, TextureVector, MorphVector);
+
 [window,rect] = Screen('OpenWindow',0);
 
 window_x = rect(3);
@@ -6,8 +8,9 @@ window_y = rect(4);
 x_center = window_x/2;
 y_center = window_y/2;
 
+img_w = 155
+img_h = 155
 
-function pic_1, pic_2; pic_3  = Disp_image(Window, TextureVector, MorphVector);
 
 
     
@@ -22,20 +25,31 @@ function pic_1, pic_2; pic_3  = Disp_image(Window, TextureVector, MorphVector);
     for I = 1:10
     
     temp(I) = Screen('MakeTexture', window, uint8());
-    TextureVector = Screen('DrawTexture', window, temp(I), [], ...
-        [x_center - x_image/4 - x_image/8, y_center - y_image/4 , x_center + x_image/4 + x_image/8, y_center + y_image/4 + y_image/8]);
     
     Screen('TextureVector' , window, temp(I), [], ...
         [x_center, y_center + y_image/4, x_center, y_center + y_image/4]); 
     
-    Screen('TextureVector' , window, temp(I), [], ...)
+    RandLoR = [1 2];
+    index_randlor = randsample(RandLor, 1);
+        
+    if index_randlor == 1 
+        Screen('DrawTexture', window, temp(I), [], ...
+        [x_center/4 - img_w/2, y_center/4 - img_/2 , x_center/4 + img_w/2, y_center/4 + img_h/2 ]);
+        
+    end    
+    
+    if index_randlor == 2
+        Screen('DrawTexture', window, temp(I), [], ...
+        [x_center/4 + img_w/2, y_center/4 + img_/2 , x_center/4 + img_w/2, y_center/4 + img_h/2 ]);
+    
+    
     
     end 
     % the morph vector ?
     %not sure whether pic_2 or pic_3 is going to be the correct picture
     % Morph_dist = 
-Morph_dist = picture_2 - picture_1
-MorphVector = [Morph_dist]
+Morph_dist = (picture_2 - picture_1);
+MorphVector = Morph_dist
     
    %Returning the users input, s or k
 [keyIsDown, secs, KeyCode] = KbCheck;
