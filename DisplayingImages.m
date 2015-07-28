@@ -1,4 +1,4 @@
-function pic_1, pic_2; pic_3  = Disp_image(Window, TextureVector, MorphVector);
+function [pic_1, pic_2,Morph_dist, User_input]  = DisplayingImages(Window, TextureVector, MorphVector);
 
 [window,rect] = Screen('OpenWindow',0);
 
@@ -11,6 +11,13 @@ y_center = window_y/2;
 img_w = 155
 img_h = 155
 
+% the morph vector ?
+    %not sure whether pic_2 or pic_3 is going to be the correct picture
+    % Morph_dist = 
+Morph_dist = (picture_2 - picture_1);
+MorphVector = Morph_dist
+    
+
 
 
     
@@ -22,6 +29,8 @@ img_h = 155
         pic_3 = random.sample(1:146, 1);
     %Displaying the images 
     end
+    
+    
     for I = 1:10
     
     temp(I) = Screen('MakeTexture', window, uint8());
@@ -37,22 +46,17 @@ img_h = 155
         [x_center/4 - img_w/2, y_center/4 - img_/2 , x_center/4 + img_w/2, y_center/4 + img_h/2 ]);
         
     end    
-    
+   
     if index_randlor == 2
         Screen('DrawTexture', window, temp(I), [], ...
         [x_center/4 + img_w/2, y_center/4 + img_/2 , x_center/4 + img_w/2, y_center/4 + img_h/2 ]);
-    
+         pic_2 = random.sample(1:146, 1) + Morph_dist;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
     
     
     end 
-    % the morph vector ?
-    %not sure whether pic_2 or pic_3 is going to be the correct picture
-    % Morph_dist = 
-Morph_dist = (picture_2 - picture_1);
-MorphVector = Morph_dist
-    
-   %Returning the users input, s or k
-[keyIsDown, secs, KeyCode] = KbCheck;
+    end
+   %Returning the users input, s or k in terms of KbCheck
+[keyIsDown, secs, KeyCode] = User_input;
   
 for trials = 1:10
 vector_1 = [1:10];
@@ -74,7 +78,7 @@ end
         
 while 1
 
-[keyIsDown, secs, KeyCode] = KbCheck;
+[keyIsDown, secs, KeyCode] = User_Input;
     
 if KeyCode(KbName('s'))
    response = 's' ;
