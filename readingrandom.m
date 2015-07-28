@@ -1,18 +1,9 @@
-%function [A, picture1, picture2, randLorR] = readingrandom();
-clear all;
+function [TextureVector, picture1, picture2, randLorR] = readingrandom(window);
 
-Screen('Preference', 'SkipSyncTests', 1);
-
-[window,rect] = Screen('OpenWindow', 0);
-
- Screen('BlendFunction', window, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
- HideCursor();
-
- mask = imread('black_new.png');
+ mask = imread('oval.png');
 
  mask = 255 - mask(:,:,1);
- A = [];
+ TextureVector = [];
  B = 1:147;
  numtrials = 130;
  picture1 = randsample(B, numtrials);
@@ -52,12 +43,15 @@ Screen('Preference', 'SkipSyncTests', 1);
     end
 
      C = imresize(TRIANGLE, [155 155]);
+     mask = imresize(mask, [155 155]);
 
      C(:,:,4) = mask;
 
-     A(i) = Screen('MakeTexture', window, uint8(C));
+     TextureVector(i) = Screen('MakeTexture', window, uint8(C));
     
 
  end
  
  Screen('CloseAll');
+ 
+end
