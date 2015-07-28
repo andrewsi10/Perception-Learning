@@ -1,15 +1,6 @@
-function 
-clear all;
+function [A, picture1, picture2, randLorR] = readingrandom();
 
-Screen('Preference', 'SkipSyncTests', 1);
-
-[window,rect] = Screen('OpenWindow', 0);
-
- Screen('BlendFunction', window, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
- HideCursor();
-
- mask = imread('black_new.png');
+mask = imread('black_new.png');
 
  mask = 255 - mask(:,:,1);
  A = [];
@@ -37,8 +28,7 @@ Screen('Preference', 'SkipSyncTests', 1);
      picture2(i) = mod(picture1(i) + Morph_Vector(i), 147) + 1;
  end
  end
- 
- picture3 = picture2 - picture1;
+
  leftorright = repmat([1,2], 1, numtrials/2);
  randLorR = Shuffle(leftorright);
  for i = 1:100
