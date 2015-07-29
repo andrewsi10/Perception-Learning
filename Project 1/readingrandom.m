@@ -18,7 +18,7 @@
  ending_number_1 = 26;
  morph_dist = repmat(morph_dist, 1, ending_number_1);
  morph_dist = Shuffle(morph_dist);
- numtrials = (ending_numer/inc_amount * end_number_1;
+ numtrials = (ending_numer/inc_amount * end_number_1);
  %oneortwo = [1, 2];
  %largerorsmaller = [];
  picture2  = [];
