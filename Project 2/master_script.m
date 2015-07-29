@@ -28,12 +28,11 @@ HideCursor();
 [TextureVector, picture1, picture2, morph_dist, randLorR] = readingrandom(window);
 
 %Run the trial and record responses
-numTrials = 3;
-responses = zeros(2, numTrials);
+numTrials = 4;
+responses = zeros(1, numTrials);
 for i=1:numTrials
-    [accuracy] = DisplayingImages(window, TextureVector, picture1(i), picture2(i), randLorR(i), rect);
-    responses(i,1) = accuracy;
-    responses(i,2) = morph_dist(i);
+    [difference] = imagedisplay(window, rect);
+    responses(i,1) = difference;
     
     if mod(i,50) == 0
         Screen('DrawText', window, 'Take a break!', rect(3)*0.5, rect(4)*0.5);

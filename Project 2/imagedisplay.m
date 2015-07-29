@@ -1,20 +1,11 @@
- clear all;
-
- Screen('Preference', 'SkipSyncTests', 1);
-
- [window,rect] = Screen('OpenWindow', 0);
-
- Screen('BlendFunction', window, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+function diff = imagedisplay(window, rect)
  
- HideCursor();
- 
- mask = imread('black_new.png');
+ mask = imread('oval.png');
  
  mask = 255 - mask(:,:,1);
  
  for i = 1:147
 
-     
     if i >= 10
      TRIANGLE = imread([num2str(i) '.png']);
     end
@@ -77,13 +68,4 @@ starting_x = x;
    Screen('Flip', window);
  end
  diff = average - index;
- disp(diff);
- 
-  Screen('CloseAll');
- 
-
-   
-   
-   
-   
-   
+end
