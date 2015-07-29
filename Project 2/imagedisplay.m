@@ -31,12 +31,14 @@ Screen('Preference', 'SkipSyncTests', 1);
     
 
  end
-% array of degrees from 0 to 300 incrementing by 60 degs each time.
+ %variables that can be changed
 x_center = rect(3)/2;
 y_center = rect(4)/2;
 image_width = 155;
 image_height = 155;
+%distance between the centers of the images
 radiusofimages = 350;
+% array of degrees from 0 to 300 incrementing by 60 degs each time.
 degrees = [0:60:300];
 % draws the six circles
 for i = 1:6
@@ -49,6 +51,6 @@ end
        [ x_center - image_width/2, y_center - image_height/2, x_center + image_width/2, y_center + image_height/2]);
 
     Screen('Flip', window);
-    WaitSecs(10);
+
 
    Screen('CloseAll');
