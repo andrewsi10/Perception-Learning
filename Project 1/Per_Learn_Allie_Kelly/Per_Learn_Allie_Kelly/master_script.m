@@ -1,6 +1,5 @@
 clear all
 RandStream.setGlobalStream(RandStream('mt19937ar', 'seed', sum(100*clock)));
-
 %Set up directory to store experiment results
 rootDir = pwd();
 if ~isdir([rootDir '/results/'])
@@ -24,7 +23,6 @@ for i=1:numTrials
     [accuracy] = DisplayingImages(window, TextureVector, picture1(i), picture2(i), randLorR(i), rect);
     responses(i,1) = accuracy;
     responses(i,2) = morph_dist(i);
-    
     if mod(i,50) == 0
         Screen('DrawText', window, 'Take a break!', rect(3)*0.5, rect(4)*0.5);
         Screen('Flip', window);
@@ -35,7 +33,6 @@ for i=1:numTrials
         end
     end
 end
-
 %Save the results file and close the Screen
 fullPath = fullfile(resultsDir, 'results');
 save(fullPath, 'responses');
