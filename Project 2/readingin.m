@@ -1,6 +1,6 @@
-function [TextureVector] = readingin();
+function [TextureVector] = readingin(window)
  
- mask = imread('black_new.png');
+ mask = imread('oval.png');
  
  mask = 255 - mask(:,:,1);
  
