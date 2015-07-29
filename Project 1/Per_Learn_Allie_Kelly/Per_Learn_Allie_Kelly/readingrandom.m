@@ -4,11 +4,10 @@ mask = imread('oval.png');
 mask = 255 - mask(:,:,1);
 
 B = 1:147; % number of images
-morph_dist = 1:4:24; % morph distant
-numtrials = size(morph_dist, 2) * 24;
+numtrials = 130; % number of trials
 picture1 = randsample(B, numtrials); % top image random
 
-
+morph_dist = 0:2:8; % morph distant
 morph_dist = Shuffle(repmat(morph_dist, 1, numtrials/length(morph_dist))); % shuffled morph distances
 picture2 = mod(picture1 + morph_dist, 147) + 1;
 

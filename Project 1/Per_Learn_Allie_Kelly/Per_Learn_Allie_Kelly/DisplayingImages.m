@@ -32,6 +32,8 @@ Screen('DrawTexture', window, TextureVector(right), [], ...
 Screen('Flip', window);
 WaitSecs(1);
 
+Screen('Flip', window);
+WaitSecs(1);
 
 % %% Getting Response
 [keyIsDown, secs, KeyCode] = KbCheck;
@@ -55,12 +57,5 @@ elseif strcmp(response, 's') && randLorR == 2
     accuracy = 0;
 elseif strcmp(response, 'k') && randLorR == 2
     accuracy = 1;
- 
-   
-    
-end 
- Screen('Flip', window);
- WaitSecs(1);
 end
-
 
