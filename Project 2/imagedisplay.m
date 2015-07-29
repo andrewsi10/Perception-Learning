@@ -1,14 +1,54 @@
+clear all;
+
+Screen('Preference', 'SkipSyncTests', 1);
+
+[window,rect] = Screen('OpenWindow', 0);
+
+ Screen('BlendFunction', window, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+ HideCursor();
+
+ mask = imread('black_new.png');
+
+ mask = 255 - mask(:,:,1);
+ 
+ for i = 1:147
+
+     
+    if i >= 10
+     TRIANGLE = imread([num2str(i) '.png']);
+    end
+    if i < 10
+     TRIANGLE = imread([num2str(0) num2str(i) '.png'] );
+    end
+
+     C = imresize(TRIANGLE, [155 155]);
+     mask = imresize(mask, [155 155]);
+
+     C(:,:,4) = mask;
+
+     TextureVector(i) = Screen('MakeTexture', window, uint8(C));
+    
+
+ end
 % array of degrees from 0 to 300 incrementing by 60 degs each time.
-x_center = rect(3)/2;
-y_center = rect(4)/2;
-image_width = 
-image_height = 
-radiusofimages = 
+x_center = 770;
+y_center = 450;
+image_width = 155;
+image_height = 155;
+radiusofimages = 350;
 degrees = [0:60:300];
+% draws the six circles
+display('hello');
 for i = 1:6
-    Screen('DrawTexture', window, [insert name of picture here], [], ...
-        x_center/2 + radiusofimages * cosd(degrees(i)) - image_width/2, y_center/2 - radiusofimages * sind(degrees(i)) - image_height/2, ...
-        x_center/2 + radiusofimages * cosd(degrees(i)) + image_width/2, y_center/2 - radiusofimages * sind(degrees(i)) + image_height/2);
+    Screen('DrawTexture', window, TextureVector(1), [], ...
+        [x_center + radiusofimages * cosd(degrees(i)) - image_width/2, y_center - radiusofimages * sind(degrees(i)) - image_height/2, ...
+        x_center + radiusofimages * cosd(degrees(i)) + image_width/2, y_center - radiusofimages * sind(degrees(i)) + image_height/2]);
 end
-    Screen('DrawTexture', window, [pictures], [], ... 
-        x_center/2 - image_width/2, y_center/2 - image_height/2, x_center/2 + image_width/2, y_center/2 + image_height/2);
+% draws the circle in the middle
+    Screen('DrawTexture', window, TextureVector(33), [], ... 
+       [ x_center - image_width/2, y_center - image_height/2, x_center + image_width/2, y_center + image_height/2]);
+    Screen('Flip', window);
+    WaitSecs(10);
+
+   Screen('CloseAll');
