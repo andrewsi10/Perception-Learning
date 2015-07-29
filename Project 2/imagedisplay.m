@@ -53,6 +53,18 @@ end
    [x_center - image_width/2,y_center - image_height/2,buttons,focus,valuators,valinfo] = GetMouse([windowPtrOrScreenNumber][, mouseDev])
    [clicks,x,y,whichButton] = GetClicks([windowPtrOrScreenNumber][, interclickSecs][, mouseDev])
    
+   [x,y,buttons] = GetMouse;
+   
+ while any(buttons) % if already down, wait for release
+       [x,y,buttons] = GetMouse;
+ end
+ while ~any(buttons) % wait for press
+       [x,y,buttons] = GetMouse;
+ end
+ while any(buttons) % wait for release
+       [x,y,buttons] = GetMouse;
+ end
+
    
     Screen('Flip', window);
 
