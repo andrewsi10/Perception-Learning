@@ -32,7 +32,10 @@ degrees = [0:60:300];
 random_starter = randi(147);
 vector = [-9 -6 -3 3 6 9];
 starting_x = x;
-
+while any(buttons)
+   [x,y,buttons] = GetMouse;
+    WaitSecs(0.1);
+end
 while ~any(buttons)
     % draws the six circles
     for i = 1:6
@@ -48,10 +51,7 @@ while ~any(buttons)
     Screen('Flip', window);
 end
 diff = average - forty;
-while any(buttons)
-   [x,y,buttons] = GetMouse;
-    WaitSecs(0.1);
-end
+
 
 
 
