@@ -32,8 +32,8 @@ Screen('Preference', 'SkipSyncTests', 1);
 
  end
 % array of degrees from 0 to 300 incrementing by 60 degs each time.
-x_center = 770;
-y_center = 450;
+x_center = rect(3)/2;
+y_center = rect(4)/2;
 image_width = 155;
 image_height = 155;
 radiusofimages = 350;
@@ -45,9 +45,10 @@ for i = 1:6
         [x_center + radiusofimages * cosd(degrees(i)) - image_width/2, y_center - radiusofimages * sind(degrees(i)) - image_height/2, ...
         x_center + radiusofimages * cosd(degrees(i)) + image_width/2, y_center - radiusofimages * sind(degrees(i)) + image_height/2]);
 end
-% draws the circle in the middle
+%draws the circle in the middle
     Screen('DrawTexture', window, TextureVector(33), [], ... 
        [ x_center - image_width/2, y_center - image_height/2, x_center + image_width/2, y_center + image_height/2]);
+
     Screen('Flip', window);
     WaitSecs(10);
 
