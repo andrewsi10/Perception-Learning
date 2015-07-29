@@ -40,14 +40,18 @@ while ~any(buttons)
             [x_center + radiusofimages * cosd(degrees(i)) - image_width/2, y_center - radiusofimages * sind(degrees(i)) - image_height/2, ...
             x_center + radiusofimages * cosd(degrees(i)) + image_width/2, y_center - radiusofimages * sind(degrees(i)) + image_height/2]);
     end
-    
+     
     [x,y,buttons] = GetMouse;
-    ind = floor(abs(mod(random_starter + x - starting_x, 147)) + 1);
-    Screen('DrawTexture', window, TextureVector(ind), [], ...
+    forty = floor(abs(mod(random_starter + x - starting_x, 147)) + 1);
+    Screen('DrawTexture', window, TextureVector(forty), [], ...
         [ x_center - image_width/2, y_center - image_height/2, x_center + image_width/2, y_center + image_height/2]);
     Screen('Flip', window);
 end
-diff = average - ind;
+diff = average - forty;
+while any(buttons)
+   [x,y,buttons] = GetMouse;
+    WaitSecs(0.1);
+end
 
 
 
