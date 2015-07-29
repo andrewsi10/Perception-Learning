@@ -1,27 +1,7 @@
-function diff = imagedisplay(window, rect)
- 
- mask = imread('oval.png');
- 
- mask = 255 - mask(:,:,1);
- 
- for i = 1:147
 
-    if i >= 10
-     TRIANGLE = imread([num2str(i) '.png']);
-    end
-    if i < 10
-     TRIANGLE = imread([num2str(0) num2str(i) '.png'] );
-    end
+function diff = imagedisplay(window, rect);
 
-     C = imresize(TRIANGLE, [275 275]);
-     mask = imresize(mask, [275 275]);
 
-     C(:,:,4) = mask;
-
-     TextureVector(i) = Screen('MakeTexture', window, uint8(C));
-    
-
- end
  %variables that can be changed
 x_center = rect(3)/2;
 y_center = rect(4)/2;
@@ -68,4 +48,11 @@ starting_x = x;
    Screen('Flip', window);
  end
  diff = average - index;
+
 end
+ 
+
+   
+   
+   
+
