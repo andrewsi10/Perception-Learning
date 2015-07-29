@@ -1,19 +1,20 @@
-function [TextureVector, picture1, picture2, randLorR] = readingrandom(window);
-
- mask = imread('oval.png');
-
+ function [TextureVector, picture1, picture2, randLorR] = readingrandom(window);
  mask = 255 - mask(:,:,1);
  TextureVector = [];
  B = 1:147;
+ numtrials = 130;
  picture1 = randsample(B, numtrials);
+ inc_amount = 2;
  inc_amount = 4;
  cnt = 0;
  morph_dist = [];
+ for i = 0:inc_amount:8  
  ending_number = 24
  for i = 1:inc_amount:ending_number
      cnt = cnt + 1;
      morph_dist(cnt) = i;
  end
+ morph_dist = repmat(morph_dist, 1, 26);
  ending_number_1 = 26;
  morph_dist = repmat(morph_dist, 1, ending_number_1);
  morph_dist = Shuffle(morph_dist);
@@ -21,7 +22,8 @@ function [TextureVector, picture1, picture2, randLorR] = readingrandom(window);
  %oneortwo = [1, 2];
  %largerorsmaller = [];
  picture2  = [];
- for i = 1:numtrials
+ 
+  for i = 1:numtrials
 
 %  largerorsmaller(i) = randsample(oneortwo, 1);
 %  if largerorsmaller(i) == 1
@@ -56,4 +58,13 @@ function [TextureVector, picture1, picture2, randLorR] = readingrandom(window);
  
  Screen('CloseAll');
  
-end
+ end
+
+ 
+
+
+ 
+ 
+ 
+ 
+ 
