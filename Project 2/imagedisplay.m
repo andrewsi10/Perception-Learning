@@ -22,8 +22,8 @@
      TRIANGLE = imread([num2str(0) num2str(i) '.png'] );
     end
 
-     C = imresize(TRIANGLE, [155 155]);
-     mask = imresize(mask, [155 155]);
+     C = imresize(TRIANGLE, [275 275]);
+     mask = imresize(mask, [275 275]);
 
      C(:,:,4) = mask;
 
@@ -34,10 +34,11 @@
  %variables that can be changed
 x_center = rect(3)/2;
 y_center = rect(4)/2;
-image_width = 155;
-image_height = 155;
+image_width = 275;
+image_height = 275;
+average = randi(147);
 %distance between the centers of the images
-radiusofimages = 350;
+radiusofimages = 300;
 % array of degrees from 0 to 300 incrementing by 60 degs each time.
 degrees = [0:60:300];
 
@@ -59,27 +60,29 @@ degrees = [0:60:300];
 %        [x,y,buttons] = GetMouse;
 %  end
 random_starter = randi(147);
+vector = [-9 -6 -3 3 6 9];
 starting_x = x;
  while ~any(buttons)
      % draws the six circles
-for i = 1:6
-    Screen('DrawTexture', window, TextureVector(1), [], ...
+ for i = 1:6
+    Screen('DrawTexture', window, TextureVector(mod(average+vector(i), 147) + 1), [], ...
         [x_center + radiusofimages * cosd(degrees(i)) - image_width/2, y_center - radiusofimages * sind(degrees(i)) - image_height/2, ...
         x_center + radiusofimages * cosd(degrees(i)) + image_width/2, y_center - radiusofimages * sind(degrees(i)) + image_height/2]);
-end
+ end
  
      [x,y,buttons] = GetMouse;
-      Screen('DrawTexture', window, TextureVector(floor(abs(mod(random_starter + x - starting_x, 147)) + 1)), [], ... 
+     index = floor(abs(mod(random_starter + x - starting_x, 147)) + 1);
+      Screen('DrawTexture', window, TextureVector(index), [], ... 
        [ x_center - image_width/2, y_center - image_height/2, x_center + image_width/2, y_center + image_height/2]);
    Screen('Flip', window);
  end
-  
+ diff = average - index;
+ disp(diff);
+ 
+  Screen('CloseAll');
  
 
    
-   
-
-   Screen('CloseAll');
    
    
    
