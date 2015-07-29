@@ -32,7 +32,7 @@ degrees = [0:60:300];
 random_starter = randi(147);
 vector = [-9 -6 -3 3 6 9];
 starting_x = x;
-ind = 0;
+
 while ~any(buttons)
     % draws the six circles
     for i = 1:6

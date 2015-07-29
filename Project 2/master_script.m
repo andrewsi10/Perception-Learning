@@ -25,13 +25,13 @@ Screen('Preference','SkipSyncTests',1);
 Screen('BlendFunction', window, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 HideCursor();
 
-[TextureVector] = readingin(window);
+TextureVector = readingin(window);
 
 %Run the trial and record responses
 numTrials = 4;
 responses = zeros(1, numTrials);
 for i=1:numTrials
-    [difference] = imagedisplay(window, rect, TextureVector);
+    difference = imagedisplay(window, rect, TextureVector);
     responses(i,1) = difference;
     
     if mod(i,50) == 0

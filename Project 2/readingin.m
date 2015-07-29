@@ -1,4 +1,4 @@
-function [TextureVector] = readingin(window)
+function TextureVector = readingin(window)
  
  mask = imread('oval.png');
  
