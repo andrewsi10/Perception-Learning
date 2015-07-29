@@ -50,7 +50,7 @@ end
     Screen('DrawTexture', window, TextureVector(33), [], ... 
        [ x_center - image_width/2, y_center - image_height/2, x_center + image_width/2, y_center + image_height/2]);
 % getMouse
-   [x_center - image_width/2,y_center - image_height/2,buttons,focus,valuators,valinfo] = GetMouse([windowPtrOrScreenNumber][, mouseDev])
+   [x,y,buttons,focus,valuators,valinfo] = GetMouse([windowPtrOrScreenNumber][, mouseDev])
    [clicks,x,y,whichButton] = GetClicks([windowPtrOrScreenNumber][, interclickSecs][, mouseDev])
    
    
