@@ -65,6 +65,7 @@ end
        [x,y,buttons] = GetMouse;
  end
 
+   
     Screen('Flip', window);
 
 
