@@ -39,7 +39,6 @@ image_height = 155;
 radiusofimages = 350;
 degrees = [0:60:300];
 % draws the six circles
-display('hello');
 for i = 1:6
     Screen('DrawTexture', window, TextureVector(1), [], ...
         [x_center + radiusofimages * cosd(degrees(i)) - image_width/2, y_center - radiusofimages * sind(degrees(i)) - image_height/2, ...
