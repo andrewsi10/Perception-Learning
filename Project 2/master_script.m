@@ -3,10 +3,20 @@ RandStream.setGlobalStream(RandStream('mt19937ar', 'seed', sum(100*clock)));
 
 %Set up directory to store experiment results
 rootDir = pwd();
-if ~isdir([rootDir '/results/'])
-    resultsDir = mkdir([rootDir '/results/']);
+if ~isdir([rootDir '\results\'])
+    resultsDir = mkdir([rootDir '\results\']);
 else
-    resultsDir = [rootDir '/results/'];
+    resultsDir = [rootDir '\results\'];
+end
+
+%Create a results file and ensure it isn't overwriting anything
+resultsFile = 'results1';
+fullPath = fullfile(resultsDir, strcat(resultsFile, '.mat') );
+temp = 2;
+while exist(fullPath, 'file') == 2
+    resultsFile = strcat(resultsFile(1:7), int2str(temp), '.mat');
+    fullPath = fullfile(resultsDir, resultsFile );
+    temp = temp + 1;
 end
 
 %Set up Screen and Window
@@ -18,7 +28,7 @@ HideCursor();
 [TextureVector, picture1, picture2, morph_dist, randLorR] = readingrandom(window);
 
 %Run the trial and record responses
-numTrials = 130;
+numTrials = 3;
 responses = zeros(2, numTrials);
 for i=1:numTrials
     [accuracy] = DisplayingImages(window, TextureVector, picture1(i), picture2(i), randLorR(i), rect);
@@ -37,6 +47,5 @@ for i=1:numTrials
 end
 
 %Save the results file and close the Screen
-fullPath = fullfile(resultsDir, 'results');
 save(fullPath, 'responses');
 Screen('CloseAll');
