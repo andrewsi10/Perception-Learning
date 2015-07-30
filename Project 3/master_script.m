@@ -1,13 +1,18 @@
 clear all
 RandStream.setGlobalStream(RandStream('mt19937ar', 'seed', sum(100*clock)));
 
+resultsString = '\results';
+if isunix == 1
+    resultsString = '/results';
+end
+
 %Set up directory to store experiment results
 rootDir = pwd();
-if ~isdir([rootDir '\results'])
-    mkdir([rootDir '\results']);
-    resultsDir = [rootDir '\results'];
+if ~isdir([rootDir resultsString])
+    mkdir([rootDir resultsString]);
+    resultsDir = [rootDir resultsString];
 else
-    resultsDir = [rootDir '\results'];
+    resultsDir = [rootDir resultsString];
 end
 
 %Create a results file and ensure it isn't overwriting anything
