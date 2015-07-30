@@ -26,7 +26,7 @@ Screen('Preference','SkipSyncTests',1);
 Screen('BlendFunction', window, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 HideCursor();
 
-TextureVector = readingin(window);
+TextureVector = makingcircles(window);
 
 %Run the trial and record responses
 numTrials = 4;
@@ -47,5 +47,5 @@ for i=1:numTrials
 end
 
 %Save the results file and close the Screen
-save(fullPath, 'responses');
+%save(fullPath, 'responses');
 Screen('CloseAll');

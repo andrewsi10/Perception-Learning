@@ -29,7 +29,7 @@ degrees = [0:60:300];
 %  while any(buttons) % wait for release
 %        [x,y,buttons] = GetMouse;
 %  end
-random_starter = randi(147);
+random_starter = randi(150);
 vector = [-9 -6 -3 3 6 9];
 starting_x = x;
 while any(buttons)
@@ -39,13 +39,13 @@ end
 while ~any(buttons)
     % draws the six circles
     for i = 1:6
-        Screen('DrawTexture', window, TextureVector(mod(average+vector(i), 147) + 1), [], ...
+        Screen('DrawTexture', window, TextureVector(mod(average+vector(i), 150) + 1), [], ...
             [x_center + radiusofimages * cosd(degrees(i)) - image_width/2, y_center - radiusofimages * sind(degrees(i)) - image_height/2, ...
             x_center + radiusofimages * cosd(degrees(i)) + image_width/2, y_center - radiusofimages * sind(degrees(i)) + image_height/2]);
     end
      
     [x,y,buttons] = GetMouse;
-    forty = floor(abs(mod(random_starter + x - starting_x, 147)) + 1);
+    forty = floor(abs(mod(random_starter + x - starting_x, 150)) + 1);
     Screen('DrawTexture', window, TextureVector(forty), [], ...
         [ x_center - image_width/2, y_center - image_height/2, x_center + image_width/2, y_center + image_height/2]);
     Screen('Flip', window);
