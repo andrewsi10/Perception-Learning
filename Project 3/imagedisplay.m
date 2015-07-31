@@ -39,9 +39,9 @@ end
 while ~any(buttons)
     % draws the six circles
     for i = 1:6
-        temp = mod(average+vector(i), 150) + 1;
+        temp = abs(mod(average+vector(i), 150)) + 1;
         
-        Screen('DrawTexture', window, TextureVector(temp), [], ...
+        Screen('DrawTexture', window, TextureVector(1), [], ...
             [x_center + radiusofimages * cosd(degrees(i)) - ImageWidth(temp)/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth(temp)/2, ...
             x_center + radiusofimages * cosd(degrees(i)) + ImageWidth(temp)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(temp)/2]);
     end
@@ -52,6 +52,8 @@ while ~any(buttons)
         [ x_center - ImageWidth(forty)/2, y_center - ImageWidth(forty)/2, x_center + ImageWidth(forty)/2, y_center + ImageWidth(forty)/2]);
     Screen('Flip', window);
 end
+    Screen('Flip', window);
+    WaitSecs(0.5);
 diff = average - forty;
 
 

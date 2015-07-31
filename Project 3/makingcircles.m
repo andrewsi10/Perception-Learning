@@ -1,6 +1,12 @@
 function [TextureVector ImageWidth] = makingcircles(window)
+  
+ mask = imread('black_new.png');
  
+ mask = 255 - mask(:,:,1);
+ mask = imresize(mask, [272 272]);
+
  TRIANGLE = imread('circle.png');
+ TRIANGLE(:, :, 4) = mask;
  factor_size = 0.98;
  ImageWidth(1) = 272;
  for i = 1:75
