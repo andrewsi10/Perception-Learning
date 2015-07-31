@@ -80,8 +80,8 @@ while ~any(buttons)
 end
     Screen('Flip', window);
     WaitSecs(0.5);
-diff = average - forty;
-locdiff = local_average - forty;
+diff = min(average - forty, 150 - average + forty);
+locdiff = min(local_average - forty, 150 - local_average + forty);
 
 
 
