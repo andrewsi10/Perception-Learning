@@ -31,6 +31,7 @@ degrees = [0:60:300];
 %  end
 random_starter = randi(150);
 vector = [-9 -6 -3 3 6 9];
+vector = Shuffle(vector);
 starting_x = x;
 while any(buttons)
    [x,y,buttons] = GetMouse;
