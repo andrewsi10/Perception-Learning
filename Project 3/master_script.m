@@ -34,7 +34,7 @@ HideCursor();
 [TextureVector, ImageWidth] = makingcircles(window);
 
 %Run the trial and record responses
-numTrials = 4;
+numTrials = 100;
 responses = zeros(1, numTrials);
 for i=1:numTrials
     difference = imagedisplay(window, rect, TextureVector, ImageWidth);
