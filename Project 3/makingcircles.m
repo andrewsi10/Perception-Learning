@@ -20,5 +20,7 @@ function [TextureVector ImageWidth] = makingcircles(window)
      TextureVector(j) = Screen('MakeTexture', window, uint8(TRIANGLE));
      TRIANGLE = imresize(TRIANGLE, 1.0/factor_size); 
      ImageWidth(j + 1) = ImageWidth(j) / factor_size;
+  
  end
+ 
 end
