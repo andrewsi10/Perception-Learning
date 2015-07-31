@@ -34,11 +34,15 @@ HideCursor();
 [TextureVector, ImageWidth] = makingcircles(window);
 
 %Run the trial and record responses
-numTrials = 100;
-responses = zeros(1, numTrials);
+numTrials = 4;
+responses = zeros(5, numTrials);
 for i=1:numTrials
-    [difference avg locavg] = imagedisplay(window, rect, TextureVector, ImageWidth);
-    responses(i,1) = difference;
+    [diff locdiff avg locavg subsetsize] = imagedisplay(window, rect, TextureVector, ImageWidth);
+    responses(i, 1) = diff;
+    responses(i, 2) = locdiff;
+    responses(i, 3) = avg;
+    responses(i, 4) = locavg;
+    responses(i, 5) = subsetsize;
     
     if mod(i,50) == 0
         Screen('DrawText', window, 'Take a break!', rect(3)*0.5, rect(4)*0.5);
@@ -53,5 +57,5 @@ for i=1:numTrials
 end
 
 %Save the results file and close the Screen
-%save(fullPath, 'responses');
+save(fullPath, 'responses');
 Screen('CloseAll');

@@ -1,4 +1,4 @@
-function [diff locdiff average local_average] = imagedisplay(window, rect, TextureVector, ImageWidth)
+function [diff locdiff average local_average subsetsize] = imagedisplay(window, rect, TextureVector, ImageWidth)
 
 
 %variables that can be changed
@@ -25,7 +25,9 @@ end
 if x == 4
     numcircles = 6;
 end
-    
+
+subsetsize = numcircles;
+
 %draws the circle in the middle
 
 % getMouse
