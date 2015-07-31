@@ -1,4 +1,4 @@
-function diff = imagedisplay(window, rect, TextureVector, ImageWidth)
+function [diff average local_average] = imagedisplay(window, rect, TextureVector, ImageWidth)
 
 
 %variables that can be changed
@@ -6,13 +6,25 @@ x_center = rect(3)/2;
 y_center = rect(4)/2;
 image_width = ImageWidth(1);
 image_height = ImageWidth(1);
-average = randi(147);
+average = randi(150);
 %distance between the centers of the images
 radiusofimages = 300;
 % array of degrees from 0 to 300 incrementing by 60 degs each time.
 degrees = [0:60:300];
-int x = randi(4);
+x = randi(4);
+
 if x == 1
+    numcircles = 1;
+end
+if x == 2
+    numcircles = 2;
+end
+if x == 3
+    numcircles = 4;
+end
+if x == 4
+    numcircles = 6;
+end
     
 %draws the circle in the middle
 
@@ -39,9 +51,18 @@ while any(buttons)
    [x,y,buttons] = GetMouse;
     WaitSecs(0.1);
 end
+local_average = 0;
+for i = 1:numcircles
+    local_average = local_average + vector(i);
+end
+local_average = local_average + numcircles * average;
+local_average = local_average / numcircles;
+display(local_average);
+display(average);
+degrees = Shuffle(degrees);
 while ~any(buttons)
     % draws the six circles
-    for i = 1:6
+    for i = 1:numcircles
         temp = abs(mod(average+vector(i), 150)) + 1;
         
         Screen('DrawTexture', window, TextureVector(1), [], ...
@@ -58,6 +79,7 @@ end
     Screen('Flip', window);
     WaitSecs(0.5);
 diff = average - forty;
+
 
 
 

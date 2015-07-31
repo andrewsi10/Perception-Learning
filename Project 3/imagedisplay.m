@@ -1,4 +1,4 @@
-function [diff average local_average] = imagedisplay(window, rect, TextureVector, ImageWidth)
+function [diff locdiff average local_average] = imagedisplay(window, rect, TextureVector, ImageWidth)
 
 
 %variables that can be changed
@@ -79,6 +79,7 @@ end
     Screen('Flip', window);
     WaitSecs(0.5);
 diff = average - forty;
+locdiff = local_average - forty;
 
 
 
