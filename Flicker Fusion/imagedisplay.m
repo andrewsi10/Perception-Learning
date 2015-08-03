@@ -12,7 +12,7 @@ radiusofimages = 400;
 % array of degrees from 0 to 300 incrementing by 60 degs each time.
 degrees = [0:60:300];
 
-poss_freq = [5:5:10];
+poss_freq = [5:5:50];
 frequency = randsample(poss_freq, 1);
 %draws the circle in the middle
 
