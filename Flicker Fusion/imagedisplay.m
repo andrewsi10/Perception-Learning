@@ -63,29 +63,29 @@ end
 Screen('Flip', window);
 while 1
     [keyIsDown, secs, KeyCode] = KbCheck();
-    if KeyCode(KbName('1!'))
+    if KeyCode(KbName('d'))
         response = '1' ;
         break;
     end
     
-    if KeyCode(KbName('2@'))
+    if KeyCode(KbName('e'))
         response = '2' ;
         break;
     end
-    if KeyCode(KbName('3#'))
+    if KeyCode(KbName('w'))
         response = '3';
         break;
     end
     
-    if KeyCode(KbName('4$'))
+    if KeyCode(KbName('a'))
         response = '4';
         break;
     end
-    if KeyCode(KbName('5%'))
+    if KeyCode(KbName('z'))
         response = '5';
         break;
     end
-    if KeyCode(KbName('6^'))
+    if KeyCode(KbName('x'))
         response = '6';
         break;
     end
