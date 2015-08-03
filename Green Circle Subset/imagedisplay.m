@@ -69,7 +69,7 @@ while ~any(buttons)
         
         Screen('DrawTexture', window, TextureVector(1), [], ...
             [x_center + radiusofimages * cosd(degrees(i)) - ImageWidth(temp)/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth(temp)/2, ...
-            x_center + radiusofimages * cosd(degrees(i)) + ImageWidth(temp)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(temp)/2]);
+             x_center + radiusofimages * cosd(degrees(i)) + ImageWidth(temp)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(temp)/2]);
     end
     % draws the seventh circle that the user modifies
     [x,y,buttons] = GetMouse;
@@ -80,9 +80,10 @@ while ~any(buttons)
 end
     Screen('Flip', window);
     WaitSecs(0.5);
-diff = min(average - forty, 150 - average + forty);
+diff = min(average - forty, 150 - average + forty); 
 locdiff = min(local_average - forty, 150 - local_average + forty);
-
+%describe task -> participants: Gender, handedness, age: m, sd -> results
+%-> how does the experiment contribute to the ensemble coding thing
 
 
 
