@@ -4,9 +4,6 @@ function [rightorwrong frequency ] = imagedisplay(window, rect, TextureVector, I
 %variables that can be changed
 x_center = rect(3)/2;
 y_center = rect(4)/2;
-image_width = ImageWidth(1);
-image_height = ImageWidth(1);
-average = randi(150);
 %distance between the centers of the images
 radiusofimages = 400;
 % array of degrees from 0 to 300 incrementing by 60 degs each time.
