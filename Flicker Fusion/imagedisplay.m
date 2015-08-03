@@ -12,7 +12,7 @@ radiusofimages = 400;
 % array of degrees from 0 to 300 incrementing by 60 degs each time.
 degrees = [0:60:300];
 
-poss_freq = [5:5:20];
+poss_freq = [5:5:10];
 frequency = randsample(poss_freq, 1);
 %draws the circle in the middle
 
@@ -38,20 +38,21 @@ while keyIsDown
 end
 numofFlickers = 20;
 weird = randi(6);
-
+h = randi(2);
+oneorzero = [0 1];
 for j = 1:numofFlickers
     % draws the six circles
     for i = 1:numcircles
         if i ~= weird
             
             
-            Screen('DrawTexture', window, TextureVector(mod(j,2) + 1), [], ...
+            Screen('DrawTexture', window, TextureVector(mod(j + oneorzero(h),2) + 1), [], ...
                 [x_center + radiusofimages * cosd(degrees(i)) - ImageWidth/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth/2, ...
                 x_center + radiusofimages * cosd(degrees(i)) + ImageWidth/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth/2]);
             
         else
             
-            Screen('DrawTexture', window, TextureVector(mod(j+1,2) + 1), [], ...
+            Screen('DrawTexture', window, TextureVector(mod(j + oneorzero(mod(h, 2) + 1),2) + 1), [], ...
                 [x_center + radiusofimages * cosd(degrees(i)) - ImageWidth/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth/2, ...
                 x_center + radiusofimages * cosd(degrees(i)) + ImageWidth/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth/2]);
         end
@@ -90,6 +91,7 @@ while 1
         break;
     end
 end
+
 if str2num(response) == weird
     rightorwrong = 1;
 else

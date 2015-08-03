@@ -34,7 +34,7 @@ HideCursor();
 [TextureVector, ImageWidth] = makingsquares(window);
 
 %Run the trial and record responses
-numTrials = 4;
+numTrials = 15;
 responses = zeros(2, numTrials);
 for i=1:numTrials
     [rightorwrong, frequency] = imagedisplay(window, rect, TextureVector, ImageWidth);
