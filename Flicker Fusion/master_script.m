@@ -37,8 +37,8 @@ HideCursor();
 numTrials = 4;
 responses = zeros(2, numTrials);
 for i=1:numTrials
-    [accuracy frequency] = imagedisplay(window, rect, TextureVector, ImageWidth);
-    responses(i, 1) = accuracy;
+    [rightorwrong, frequency] = imagedisplay(window, rect, TextureVector, ImageWidth);
+    responses(i, 1) = rightorwrong;
     responses(i, 2) = frequency;
     
     if mod(i,50) == 0
