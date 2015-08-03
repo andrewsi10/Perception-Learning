@@ -6,6 +6,6 @@ whiteSquare = imread('White square.png');
 whiteSquare = imresize(whiteSquare, [272 272]);
 TextureVector(1) = Screen('MakeTexture', window, uint8(blackSquare));
 TextureVector(2) = Screen('MakeTexture', window, uint8(whiteSquare));
-ImageWidth = [272 272];
+ImageWidth = 272;
 
 end
