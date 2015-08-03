@@ -33,7 +33,7 @@ frequency = randsample(poss_freq, 1);
 %  end
 numcircles = 6;
 while keyIsDown
-   [keyIsDown, secs, KeyCode] = KbCheck();
+    [keyIsDown, secs, KeyCode] = KbCheck();
     WaitSecs(0.1);
 end
 numofFlickers = 20;
@@ -43,62 +43,60 @@ for j = 1:numofFlickers
     % draws the six circles
     for i = 1:numcircles
         if i ~= weird
-        
-        
-        Screen('DrawTexture', window, TextureVector(mod(j,2) + 1), [], ...
-            [x_center + radiusofimages * cosd(degrees(i)) - ImageWidth/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth/2, ...
-             x_center + radiusofimages * cosd(degrees(i)) + ImageWidth/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth/2]);
-        
-        else
-             
-        Screen('DrawTexture', window, TextureVector(mod(j+1,2) + 1), [], ...
-            [x_center + radiusofimages * cosd(degrees(i)) - ImageWidth/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth/2, ...
-             x_center + radiusofimages * cosd(degrees(i)) + ImageWidth/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth/2]);
-        end
             
-    end  
+            
+            Screen('DrawTexture', window, TextureVector(mod(j,2) + 1), [], ...
+                [x_center + radiusofimages * cosd(degrees(i)) - ImageWidth/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth/2, ...
+                x_center + radiusofimages * cosd(degrees(i)) + ImageWidth/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth/2]);
+            
+        else
+            
+            Screen('DrawTexture', window, TextureVector(mod(j+1,2) + 1), [], ...
+                [x_center + radiusofimages * cosd(degrees(i)) - ImageWidth/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth/2, ...
+                x_center + radiusofimages * cosd(degrees(i)) + ImageWidth/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth/2]);
+        end
+        
+    end
     Screen('Flip', window);
     WaitSecs(1/frequency);
 end
-    Screen('Flip', window);
-    while 1
+Screen('Flip', window);
+while 1
     [keyIsDown, secs, KeyCode] = KbCheck();
-    if KeyCode(KbName('a'))
-   response = '1' ;
-   break  
+    if KeyCode(KbName('1!'))
+        response = '1' ;
+        break;
     end
+    
+    if KeyCode(KbName('2@'))
+        response = '2' ;
+        break;
+    end
+    if KeyCode(KbName('3#'))
+        response = '3';
+        break;
+    end
+    
+    if KeyCode(KbName('4$'))
+        response = '4';
+        break;
+    end
+    if KeyCode(KbName('5%'))
+        response = '5';
+        break;
+    end
+    if KeyCode(KbName('6^'))
+        response = '6';
+        break;
+    end
+end
+if str2num(response) == weird
+    rightorwrong = 1;
+else
+    rightorwrong = 0;
+end
 
- 
-if KeyCode(KbName('2'))
-   response = '2' ;
-   break  
-end
-if KeyCode(KbName('3'))
-    response = '3';
-    break
-end
-
-if KeyCode(KbName('4'))
-    response = '4';
-    break
-end
-if KeyCode(KbName('5'))
-    response = '5';
-    break
-end
-if KeyCode(KbName('6'))
-    response = '6';
-    break
-end
-disp(response);
-    end
-    if str2num(response) == weird
-        rightorwrong = 1;
-    else
-        rightorwrong = 0;
-    end
-   
-    WaitSecs(0.5);
+WaitSecs(0.5);
 %describe task -> participants: Gender, handedness, age: m, sd -> results
 %-> how does the experiment contribute to the ensemble coding thing
 
