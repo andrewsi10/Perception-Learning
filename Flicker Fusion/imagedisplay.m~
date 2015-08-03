@@ -61,43 +61,20 @@ for j = 1:numofFlickers
     WaitSecs(1/frequency);
 end
     Screen('Flip', window);
-    while 1
+    while ~keyIsDown
     [keyIsDown, secs, KeyCode] = KbCheck;
-    if KeyCode(KbName('1'))
-   response = '1' ;
+    if KeyCode(KbName('s'))
+   response = 's' ;
    break  
     end
 
  
-if KeyCode(KbName('2'))
-   response = '2' ;
+if KeyCode(KbName('k'))
+   response = 'k' ;
    break  
 end
-if KeyCode(KbName('3'))
-    response = '3';
-    break
-end
-
-if KeyCode(KbName('4'))
-    response = '4';
-    break
-end
-if KeyCode(KbName('5'))
-    response = '5';
-    break
-end
-if KeyCode(KbName('6'))
-    response = '6';
-    break
-end
-WaitSecs(0.1);
+    WaitSecs(0.1);
     end
-    if str2num(response) == weird
-        rightorrong = 1;
-    else
-        rightorrong = 0;
-    end
-   
     WaitSecs(0.5);
 %describe task -> participants: Gender, handedness, age: m, sd -> results
 %-> how does the experiment contribute to the ensemble coding thing
