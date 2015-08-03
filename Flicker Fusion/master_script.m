@@ -31,7 +31,7 @@ Screen('Preference','SkipSyncTests',1);
 Screen('BlendFunction', window, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 HideCursor();
 
-[TextureVector, ImageWidth] = makingcircles(window);
+[TextureVector, ImageWidth] = makingsquares(window);
 
 %Run the trial and record responses
 numTrials = 4;
