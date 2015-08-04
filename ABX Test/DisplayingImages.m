@@ -104,7 +104,7 @@ end
 while 1
 
 [keyIsDown, secs, KeyCode] = KbCheck;
- 
+
 [keyIsDown, secs, KeyCode] = User_Input;
     
 if KeyCode(KbName('s'))

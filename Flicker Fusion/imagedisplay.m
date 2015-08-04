@@ -1,4 +1,4 @@
-function [rightorwrong frequency ] = imagedisplay(window, rect, TextureVector, ImageWidth)
+function [rightorwrong frequency] = imagedisplay(window, rect, TextureVector, ImageWidth)
 
 
 %variables that can be changed
