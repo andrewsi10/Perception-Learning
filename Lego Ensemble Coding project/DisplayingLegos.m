@@ -83,14 +83,14 @@ end
 if KeyCode(KbName('RightArrow'))
 
     
-    Screen('DrawTexture', window, TextureVector2(right), [], ...
+    Screen('DrawTexture', window, TextureVector(2), [], ...
     [window_x/2 + window_x/12, window_y, window_x/2 + img_w/12, window_y]
     
 end
 
 if KeyCode(KbName('LeftArrow'))
     
-    Screen('DrawTexture', window, TextureVector1(right), [], ...
+    Screen('DrawTexture', window, TextureVector(1), [], ...
     [window_x/2 - window_x/12, window_y, window_x/2 - img_w/12, window_y]
     
 end 
