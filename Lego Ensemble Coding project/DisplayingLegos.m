@@ -78,6 +78,25 @@ while ~any(buttons)
         [ x_center - ImageWidth(forty)/2, y_center - ImageWidth(forty)/2, x_center + ImageWidth(forty)/2, y_center + ImageWidth(forty)/2]);
     Screen('Flip', window);
 end
+[keyIsDown, secs, KeyCode] = KbCheck();
+
+if KeyCode(KbName('RightArrow'))
+
+    
+    Screen('DrawTexture', window, TextureVector2(right), [], ...
+    [window_x/2 + window_x/12, window_y, window_x/2 + img_w/12, window_y]
+    
+end
+
+if KeyCode(KbName('LeftArrow'))
+    
+    Screen('DrawTexture', window, TextureVector1(right), [], ...
+    [window_x/2 - window_x/12, window_y, window_x/2 - img_w/12, window_y]
+    
+end 
+    
+    
+
     Screen('Flip', window);
     WaitSecs(0.5);
 diff = min(average - forty, 150 - average + forty); 
