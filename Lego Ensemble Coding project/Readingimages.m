@@ -4,23 +4,22 @@ function TextureVector = readingin(window)
  
  mask = 255 - mask(:,:,1);
  
- for i = 1:147
-
-     
-    if i >= 10
-     TRIANGLE = imread([num2str(i) '.png']);
-    end
-    if i < 10
-     TRIANGLE = imread([num2str(0) num2str(i) '.png'] );
-    end
-
-     C = imresize(TRIANGLE, [275 275]);
-     mask = imresize(mask, [275 275]);
-
-     C(:,:,4) = mask;
-
-     TextureVector(i) = Screen('MakeTexture', window, uint8(C));
-    
-
- end
+ TRIANGLE = imread(['emmet left.png']);
+ C = imresize(TRIANGLE, [275 275]);
+ mask = imresize(mask, [275 275]);
+ C(:,:,4) = mask;
+ TextureVector(1) = Screen('MakeTexture', window, uint8(C));
+ 
+ TRIANGLE = imread(['emmet right.png']);
+ C = imresize(TRIANGLE, [275 275]);
+ mask = imresize(mask, [275 275]);
+ C(:,:,4) = mask;
+ TextureVector(2) = Screen('MakeTexture', window, uint8(C));
+ 
+ TRIANGLE = imread(['lego brick.png']);
+ C = imresize(TRIANGLE, [275 275]);
+ mask = imresize(mask, [275 275]);
+ C(:,:,4) = mask;
+ TextureVector(3) = Screen('MakeTexture', window, uint8(C));
+ 
 end
