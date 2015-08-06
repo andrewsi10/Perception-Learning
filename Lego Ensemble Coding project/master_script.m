@@ -31,18 +31,16 @@ Screen('Preference','SkipSyncTests',1);
 Screen('BlendFunction', window, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 HideCursor();
 
-%TextureVector = Readingimages(window);
+TextureVector = Readingimages(window);
 [y, Fs] = audioread('everything is awesome.mp3');
 player = audioplayer(y, Fs);
 play(player);
-WaitSecs(10);
-stop(player);
 
 %Run the trial and record responses
 numTrials = 4;
 responses = zeros(5, numTrials);
 for i=1:numTrials
-    [diff locdiff avg locavg subsetsize] = imagedisplay(window, rect, TextureVector, ImageWidth);
+    [diff locdiff avg locavg subsetsize] = imagedisplay(window, rect, TextureVector);
     responses(i, 1) = diff;
     responses(i, 2) = locdiff;
     responses(i, 3) = avg;
@@ -60,6 +58,8 @@ for i=1:numTrials
         end
     end
 end
+
+stop(player);
 
 %Save the results file and close the Screen
 save(fullPath, 'responses');
