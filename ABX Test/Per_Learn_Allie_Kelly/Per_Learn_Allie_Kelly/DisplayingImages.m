@@ -57,5 +57,27 @@ elseif strcmp(response, 's') && randLorR == 2
     accuracy = 0;
 elseif strcmp(response, 'k') && randLorR == 2
     accuracy = 1;
+    
+[keyIsDown, secs, KeyCode] = KbCheck();
+
+if KeyCode(KbName('RightArrow'))
+
+    
+    Screen('DrawTexture', window, TextureVector2(right), [], ...
+    [window_x/2 + window_x/12, window_y, window_x/2 + img_w/12, window_y]
+    
+end
+
+if KeyCode(KbName('LeftArrow'))
+    
+    Screen('DrawTexture', window, TextureVector1(right), [], ...
+    [window_x/2 - window_x/12, window_y, window_x/2 - img_w/12, window_y]
+    
+end 
+    
+    
+    
+    
+    
 end
 
