@@ -33,9 +33,10 @@ HideCursor();
 
 %TextureVector = Readingimages(window);
 [y, Fs] = audioread('everything is awesome.mp3');
-sound(y, Fs);
+player = audioplayer(y, Fs);
+play(player);
 WaitSecs(10);
-clear playsnd;
+stop(player);
 
 %Run the trial and record responses
 numTrials = 4;
