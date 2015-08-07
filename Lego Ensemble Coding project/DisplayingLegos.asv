@@ -84,16 +84,18 @@ location = 0;
 distance_emitt = window_x/12
 
 for I = 1:10000
-    location_right = window_x/2 + distance_emitt
+    location = window_x/2 + distance_emitt
     
 if KeyCode(KbName('RightArrow'))
-    location_right = window_x/2 + distance_emitt
+
+    
     Screen('DrawTexture', window, TextureVector(2), [], ...
-    [location, window_y, location, window_y]);
+    [window_x/2 + window_x/12, window_y, window_x/2 + img_w/12, window_y]);
+    
 end
 
 if KeyCode(KbName('LeftArrow'))
-    location_left = window_x/2 - distance_emitt
+    
     Screen('DrawTexture', window, TextureVector(1), [], ...
     [window_x/2 - window_x/12, window_y, window_x/2 - img_w/12, window_y]);
     
