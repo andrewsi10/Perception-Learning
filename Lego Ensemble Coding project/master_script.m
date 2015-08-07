@@ -31,7 +31,7 @@ Screen('Preference','SkipSyncTests',1);
 Screen('BlendFunction', window, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 HideCursor();
 
-TextureVector = Readingimages(window);
+[TextureVector ImageWidth] = Readingimages(window);
 [y, Fs] = audioread('everything is awesome.mp3');
 player = audioplayer(y, Fs);
 play(player);
@@ -40,7 +40,7 @@ play(player);
 numTrials = 4;
 responses = zeros(5, numTrials);
 for i=1:numTrials
-    [diff locdiff avg locavg subsetsize] = DisplayingLegos(window, rect, TextureVector);
+    [diff locdiff avg locavg subsetsize] = DisplayingLegos(window, rect, TextureVector, ImageWidth);
     responses(i, 1) = diff;
     responses(i, 2) = locdiff;
     responses(i, 3) = avg;
