@@ -27,7 +27,8 @@ end
 
 %Set up Screen and Window
 Screen('Preference','SkipSyncTests',1);
-[window, rect] = Screen('OpenWindow', 0, [0 128 64]);
+[window, rect] = Screen('OpenWindow', 0, [0 128 64], [0 0 770 450]);
+
 Screen('BlendFunction', window, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 HideCursor();
 
@@ -36,7 +37,8 @@ HideCursor();
 %Run the trial and record responses
 numTrials = 15;
 responses = zeros(2, numTrials);
-for i=1:numTrials
+for i=1:numTrials                    
+   
     [rightorwrong, frequency] = imagedisplay(window, rect, TextureVector, ImageWidth);
     responses(i, 1) = rightorwrong;
     responses(i, 2) = frequency;

@@ -62,5 +62,5 @@ end
 stop(player);
 
 %Save the results file and close the Screen
-save(fullPath, 'responses');
+% save(fullPath, 'responses');
 Screen('CloseAll');

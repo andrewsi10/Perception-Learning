@@ -5,7 +5,7 @@ function [rightorwrong frequency] = imagedisplay(window, rect, TextureVector, Im
 x_center = rect(3)/2;
 y_center = rect(4)/2;
 %distance between the centers of the images
-radiusofimages = 400;
+radiusofimages = 177;
 % array of degrees from 0 to 300 incrementing by 60 degs each time.
 degrees = [0:60:300];
 
@@ -70,6 +70,7 @@ while 1
         response = '2' ;
         break;
     end
+    
     if KeyCode(KbName('w'))
         response = '3';
         break;

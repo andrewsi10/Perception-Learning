@@ -8,7 +8,7 @@ image_width = ImageWidth(1);
 image_height = ImageWidth(1);
 average = randi(150);
 %distance between the centers of the images
-radiusofimages = 300;
+radiusofimages = 200;
 % array of degrees from 0 to 300 incrementing by 60 degs each time.
 degrees = [0:60:300];
 x = randi(4);

@@ -75,7 +75,6 @@ degrees = Shuffle(degrees);
              x_center + radiusofimages * cosd(degrees(i)) + ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(1)/2]);
     end
     Screen('Flip', window);
-    WaitSecs(5);
 
 [keyIsDown, secs, KeyCode] = KbCheck();
 
@@ -83,20 +82,19 @@ location = 0;
 distance_emitt = window_x/12;
 [x,y,buttons] = GetMouse;
 
-
 while ~any(buttons)
     [x,y,buttons] = GetMouse;    
 if KeyCode(KbName('RightArrow'))
     location_right = x_center + distance_emitt;
     Screen('DrawTexture', window, TextureVector(2), [], ...
-    [location_right - ImageWidth(1), window_y - ImageWidth(1), location + ImageWidth(1), window_y + ImageWidth(1)]);
+    [location_right - ImageWidth(1), window_y, location + ImageWidth(1), window_y]);
 end
 
 if KeyCode(KbName('LeftArrow'))
     
-    location_left = x_center - distance_emitt;
+    location_left = window_x/12 - distance_emitt;
     Screen('DrawTexture', window, TextureVector(1), [], ...
-    [location_right - ImageWidth(1), y_center - ImageWidth(1), location_right + ImageWidth(1), y_center + ImageWidth(1)]);
+    [window_x - window_x/12, window_y, window_x - img_w/12, window_y]);
     
 end
     
@@ -104,7 +102,7 @@ end
 
     Screen('Flip', window);
 end
-    
+    WaitSecs(0.5);
 diff = min(average - forty, 150 - average + forty); 
 locdiff = min(local_average - forty, 150 - local_average + forty);
 %describe task -> participants: Gender, handedness, age: m, sd -> results

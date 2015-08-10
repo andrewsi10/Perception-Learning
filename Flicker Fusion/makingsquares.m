@@ -1,11 +1,11 @@
 function [TextureVector, ImageWidth] = makingsquares(window)
 
 blackSquare = imread('Black square.png');
-blackSquare = imresize(blackSquare, [272 272]);
+blackSquare = imresize(blackSquare, [136 136]);
 whiteSquare = imread('White square.png');
-whiteSquare = imresize(whiteSquare, [272 272]);
+whiteSquare = imresize(whiteSquare, [136 136]);
 TextureVector(1) = Screen('MakeTexture', window, uint8(blackSquare));
 TextureVector(2) = Screen('MakeTexture', window, uint8(whiteSquare));
-ImageWidth = 272;
+ImageWidth = 136;
 
 end
