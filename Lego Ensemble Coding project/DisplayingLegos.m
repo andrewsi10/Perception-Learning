@@ -10,7 +10,7 @@ average = randi(150);
 window_x = rect(3);
 window_y = rect(4);
 %distance between the centers of the images
-radiusofimages = 300;
+radiusofimages = 200;
 % array of degrees from 0 to 300 incrementing by 60 degs each time.
 degrees = [0:60:300];
 x = randi(4);
@@ -67,15 +67,7 @@ degrees = Shuffle(degrees);
 
     % draws the six circles
     [x,y,buttons] = GetMouse;
-    for i = 1:numlegos
-        temp = abs(mod(average+vector(i), 150)) + 1;
-        
-        Screen('DrawTexture', window, TextureVector(3), [], ...
-            [x_center  + radiusofimages * cosd(degrees(i)) - ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth(1)/2, ...
-             x_center + radiusofimages * cosd(degrees(i)) + ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(1)/2]);
-    end
-    Screen('Flip', window);
-    WaitSecs(5);
+    
 
 [keyIsDown, secs, KeyCode] = KbCheck();
 
@@ -85,28 +77,103 @@ distance_emitt = window_x/12;
 
 
 while ~any(buttons)
+    for i = 1:numlegos
+        temp = abs(mod(average+vector(i), 150)) + 1;
+        
+        Screen('DrawTexture', window, TextureVector(3), [], ...
+            [0.25 * x_center  + radiusofimages * cosd(degrees(i)) - ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth(1)/2, ...
+             0.25 * x_center + radiusofimages * cosd(degrees(i)) + ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(1)/2]);
+    end
+    for i = 1:numlegos
+        temp = abs(mod(average+vector(i), 150)) + 1;
+        
+        Screen('DrawTexture', window, TextureVector(3), [], ...
+            [4/3 * x_center  + radiusofimages * cosd(degrees(i)) - ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth(1)/2, ...
+             4/3 * x_center + radiusofimages * cosd(degrees(i)) + ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(1)/2]);
+    end
+    Screen('Flip', window);
+    [keyIsDown, secs, KeyCode] = KbCheck();
     [x,y,buttons] = GetMouse;    
-if KeyCode(KbName('RightArrow'))
+if KeyCode(KbName('l'))
     location_right = x_center + distance_emitt;
+    for i = 1:numlegos
+        temp = abs(mod(average+vector(i), 150)) + 1;
+        
+        Screen('DrawTexture', window, TextureVector(3), [], ...
+            [0.25 * x_center  + radiusofimages * cosd(degrees(i)) - ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth(1)/2, ...
+             0.25 * x_center + radiusofimages * cosd(degrees(i)) + ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(1)/2]);
+    end
+    for i = 1:numlegos
+        temp = abs(mod(average+vector(i), 150)) + 1;
+        
+        Screen('DrawTexture', window, TextureVector(3), [], ...
+            [4/3 * x_center  + radiusofimages * cosd(degrees(i)) - ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth(1)/2, ...
+             4/3 * x_center + radiusofimages * cosd(degrees(i)) + ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(1)/2]);
+    end
     Screen('DrawTexture', window, TextureVector(2), [], ...
-    [location_right - ImageWidth(1), window_y - ImageWidth(1), location + ImageWidth(1), window_y + ImageWidth(1)]);
+    [location_right - ImageWidth(1)/2, 0.75*window_y - ImageWidth(1)/2, location_right + ImageWidth(1)/2, 0.75*window_y + ImageWidth(1)/2]);
+Screen('Flip', window);
+    while KeyCode(KbName('l')) || KeyCode(KbName('a'))
+            [keyIsDown, secs, KeyCode] = KbCheck();
+
+        WaitSecs(0.01);
+    end
+    while ~KeyCode(KbName('l')) && ~KeyCode(KbName('a'))
+            [keyIsDown, secs, KeyCode] = KbCheck();
+            [x,y,buttons] = GetMouse;    
+                    if(any(buttons))
+                        break;
+                        break;
+                    end
+        WaitSecs(0.01);
+    end
 end
 
-if KeyCode(KbName('LeftArrow'))
-    
+if KeyCode(KbName('a'))
+    for i = 1:numlegos
+        temp = abs(mod(average+vector(i), 150)) + 1;
+        
+        Screen('DrawTexture', window, TextureVector(3), [], ...
+            [0.25 * x_center  + radiusofimages * cosd(degrees(i)) - ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth(1)/2, ...
+             0.25 * x_center + radiusofimages * cosd(degrees(i)) + ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(1)/2]);
+    end
+    for i = 1:numlegos
+        temp = abs(mod(average+vector(i), 150)) + 1;
+        
+        Screen('DrawTexture', window, TextureVector(3), [], ...
+            [4/3 * x_center  + radiusofimages * cosd(degrees(i)) - ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth(1)/2, ...
+             4/3 * x_center + radiusofimages * cosd(degrees(i)) + ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(1)/2]);
+    end
     location_left = x_center - distance_emitt;
     Screen('DrawTexture', window, TextureVector(1), [], ...
-    [location_right - ImageWidth(1), y_center - ImageWidth(1), location_right + ImageWidth(1), y_center + ImageWidth(1)]);
+    [location_left - ImageWidth(1)/2, 0.75*window_y - ImageWidth(1)/2, location_left + ImageWidth(1)/2, 0.75*window_y + ImageWidth(1)/2]);
+Screen('Flip', window);
+    while KeyCode(KbName('l')) || KeyCode(KbName('a'))
+                    [keyIsDown, secs, KeyCode] = KbCheck();
+
+        WaitSecs(0.01);
+    end
+    while ~KeyCode(KbName('l')) && ~KeyCode(KbName('a'))
+                    [keyIsDown, secs, KeyCode] = KbCheck();
+                    [x,y,buttons] = GetMouse;    
+                    if(any(buttons))
+                        break;
+                        break;
+                    end
+        WaitSecs(0.01);
+    end
     
 end
     
 
-
-    Screen('Flip', window);
+    
+    
 end
     
-diff = min(average - forty, 150 - average + forty); 
-locdiff = min(local_average - forty, 150 - local_average + forty);
+% diff = min(average - forty, 150 - average + forty); 
+% locdiff = min(local_average - forty, 150 - local_average + forty);
+diff = 0;
+locdiff = 0;
 %describe task -> participants: Gender, handedness, age: m, sd -> results
 %-> how does the experiment contribute to the ensemble coding thing
 
