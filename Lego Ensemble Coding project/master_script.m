@@ -32,9 +32,17 @@ Screen('BlendFunction', window, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 HideCursor();
 
 [TextureVector ImageWidth] = Readingimages(window);
-[y, Fs] = audioread('everything is awesome.mp3');
-player = audioplayer(y, Fs);
-play(player);
+ load everything is awesome.mp3
+                    
+ filename = 'everything is awesome.mp3';
+ samples = [1,2*Fs];
+ [y, Fs] = audioread(filename, samples);
+ player = audioplayer(y, Fs);
+ sound(y,Fs)
+                    
+% [y, Fs] = audioread('everything is awesome.mp3');
+% player = audioplayer(y, Fs);
+% play(player);
 
 %Run the trial and record responses
 numTrials = 4;
@@ -59,7 +67,6 @@ for i=1:numTrials
     end
 end
 
-stop(player);
 
 %Save the results file and close the Screen
 % save(fullPath, 'responses');

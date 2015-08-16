@@ -150,7 +150,7 @@ if KeyCode(KbName('a'))
 Screen('Flip', window);
     while KeyCode(KbName('l')) || KeyCode(KbName('a'))
                     [keyIsDown, secs, KeyCode] = KbCheck();
-
+                    
         WaitSecs(0.01);
     end
     while ~KeyCode(KbName('l')) && ~KeyCode(KbName('a'))

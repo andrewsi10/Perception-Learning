@@ -1,5 +1,6 @@
 clear all
 RandStream.setGlobalStream(RandStream('mt19937ar', 'seed', sum(100*clock)));
+sca
 
 resultsString = '\results';
 if isunix == 1

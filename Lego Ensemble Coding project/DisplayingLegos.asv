@@ -7,8 +7,10 @@ y_center = rect(4)/2;
 image_width = ImageWidth(1);
 image_height = ImageWidth(1);
 average = randi(150);
+window_x = rect(3);
+window_y = rect(4);
 %distance between the centers of the images
-radiusofimages = 300;
+radiusofimages = 200;
 % array of degrees from 0 to 300 incrementing by 60 degs each time.
 degrees = [0:60:300];
 x = randi(4);
@@ -62,51 +64,118 @@ local_average = local_average / numlegos;
 display(local_average);
 display(average);
 degrees = Shuffle(degrees);
-while ~any(buttons)
+
     % draws the six circles
-    for i = 1:numlegos
-        temp = abs(mod(average+vector(i), 150)) + 1;
-        
-        Screen('DrawTexture', window, TextureVector(1), [], ...
-            [x_center + x_center/2 + radiusofimages * cosd(degrees(i)) - ImageWidth(temp)/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth(temp)/2, ...
-             x_center - x_center/2 + radiusofimages * cosd(degrees(i)) + ImageWidth(temp)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(temp)/2]);
-    end
-    % draws the seventh circle that the user modifies
     [x,y,buttons] = GetMouse;
-    forty = floor(abs(mod(random_starter + x - starting_x, 150)) + 1);
-    Screen('DrawTexture', window, TextureVector(1), [], ...
-        [ x_center - ImageWidth(forty)/2, y_center - ImageWidth(forty)/2, x_center + ImageWidth(forty)/2, y_center + ImageWidth(forty)/2]);
-    Screen('Flip', window);
-end
+    
+
 [keyIsDown, secs, KeyCode] = KbCheck();
 
 location = 0;
-distance_emitt = window_x/12
+distance_emitt = window_x/12;
+[x,y,buttons] = GetMouse;
 
-for I = 1:10000
-    location = window_x/2 + distance_emitt
-    
-if KeyCode(KbName('RightArrow'))
 
-    
-    Screen('DrawTexture', window, TextureVector(2), [], ...
-    [window_x/2 + window_x/12, window_y, window_x/2 + img_w/12, window_y]);
-    
-end
-
-if KeyCode(KbName('LeftArrow'))
-    
-    Screen('DrawTexture', window, TextureVector(1), [], ...
-    [window_x/2 - window_x/12, window_y, window_x/2 - img_w/12, window_y]);
-    
-end 
-    
-end
-
+while ~any(buttons)
+    for i = 1:numlegos
+        temp = abs(mod(average+vector(i), 150)) + 1;
+        
+        Screen('DrawTexture', window, TextureVector(3), [], ...
+            [0.25 * x_center  + radiusofimages * cosd(degrees(i)) - ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth(1)/2, ...
+             0.25 * x_center + radiusofimages * cosd(degrees(i)) + ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(1)/2]);
+    end
+    for i = 1:numlegos
+        temp = abs(mod(average+vector(i), 150)) + 1;
+        
+        Screen('DrawTexture', window, TextureVector(3), [], ...
+            [4/3 * x_center  + radiusofimages * cosd(degrees(i)) - ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth(1)/2, ...
+             4/3 * x_center + radiusofimages * cosd(degrees(i)) + ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(1)/2]);
+    end
     Screen('Flip', window);
-    WaitSecs(0.5);
-diff = min(average - forty, 150 - average + forty); 
-locdiff = min(local_average - forty, 150 - local_average + forty);
+    [keyIsDown, secs, KeyCode] = KbCheck();
+    [x,y,buttons] = GetMouse;    
+if KeyCode(KbName('l'))
+    location_right = x_center + distance_emitt;
+    for i = 1:numlegos
+        temp = abs(mod(average+vector(i), 150)) + 1;
+        
+        Screen('DrawTexture', window, TextureVector(3), [], ...
+            [0.25 * x_center  + radiusofimages * cosd(degrees(i)) - ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth(1)/2, ...
+             0.25 * x_center + radiusofimages * cosd(degrees(i)) + ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(1)/2]);
+    end
+    for i = 1:numlegos
+        temp = abs(mod(average+vector(i), 150)) + 1;
+        
+        Screen('DrawTexture', window, TextureVector(3), [], ...
+            [4/3 * x_center  + radiusofimages * cosd(degrees(i)) - ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth(1)/2, ...
+             4/3 * x_center + radiusofimages * cosd(degrees(i)) + ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(1)/2]);
+    end
+    Screen('DrawTexture', window, TextureVector(2), [], ...
+    [location_right - ImageWidth(1)/2, 0.75*window_y - ImageWidth(1)/2, location_right + ImageWidth(1)/2, 0.75*window_y + ImageWidth(1)/2]);
+Screen('Flip', window);
+    while KeyCode(KbName('l')) || KeyCode(KbName('a'))
+            [keyIsDown, secs, KeyCode] = KbCheck();
+
+        WaitSecs(0.01);
+    end
+    while ~KeyCode(KbName('l')) && ~KeyCode(KbName('a'))
+            [keyIsDown, secs, KeyCode] = KbCheck();
+            [x,y,buttons] = GetMouse;    
+                    if(any(buttons))
+                        break;
+                        break;
+                    end
+        WaitSecs(0.01);
+    end
+end
+
+if KeyCode(KbName('a'))
+    for i = 1:numlegos
+        temp = abs(mod(average+vector(i), 150)) + 1;
+        
+        Screen('DrawTexture', window, TextureVector(3), [], ...
+            [0.25 * x_center  + radiusofimages * cosd(degrees(i)) - ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth(1)/2, ...
+             0.25 * x_center + radiusofimages * cosd(degrees(i)) + ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(1)/2]);
+    end
+    for i = 1:numlegos
+        temp = abs(mod(average+vector(i), 150)) + 1;
+        
+        Screen('DrawTexture', window, TextureVector(3), [], ...
+            [4/3 * x_center  + radiusofimages * cosd(degrees(i)) - ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) - ImageWidth(1)/2, ...
+             4/3 * x_center + radiusofimages * cosd(degrees(i)) + ImageWidth(1)/2, y_center - radiusofimages * sind(degrees(i)) + ImageWidth(1)/2]);
+    end
+    location_left = x_center - distance_emitt;
+    Screen('DrawTexture', window, TextureVector(1), [], ...
+    [location_left - ImageWidth(1)/2, 0.75*window_y - ImageWidth(1)/2, location_left + ImageWidth(1)/2, 0.75*window_y + ImageWidth(1)/2]);
+Screen('Flip', window);
+    while KeyCode(KbName('l')) || KeyCode(KbName('a'))
+                    [keyIsDown, secs, KeyCode] = KbCheck();
+                    [y, Fs] = audioread('everything is awesome.mp3');
+                    player = audioplayer(y, Fs);
+                    play(player);
+        WaitSecs(0.01);
+    end
+    while ~KeyCode(KbName('l')) && ~KeyCode(KbName('a'))
+                    [keyIsDown, secs, KeyCode] = KbCheck();
+                    [x,y,buttons] = GetMouse;    
+                    if(any(buttons))
+                        break;
+                        break;
+                    end
+        WaitSecs(0.01);
+    end
+    
+end
+    
+
+    
+    
+end
+    
+% diff = min(average - forty, 150 - average + forty); 
+% locdiff = min(local_average - forty, 150 - local_average + forty);
+diff = 0;
+locdiff = 0;
 %describe task -> participants: Gender, handedness, age: m, sd -> results
 %-> how does the experiment contribute to the ensemble coding thing
 
