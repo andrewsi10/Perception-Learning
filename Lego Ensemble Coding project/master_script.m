@@ -51,7 +51,7 @@ for i=1:numTrials
     [diff locdiff avg locavg subsetsize] = DisplayingLegos(window, rect, TextureVector, ImageWidth);
     responses(i, 1) = diff;
     responses(i, 2) = locdiff;
-    responses(i, 3) = avg;
+    responses(i, 3) = avg;  
     responses(i, 4) = locavg;
     responses(i, 5) = subsetsize;
     
